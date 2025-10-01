@@ -8,7 +8,6 @@ proxy-providers:
     override:
       udp: true
       skip-cert-verify: true
-      # additional-prefix: "[机场一]"
 
 mixed-port: 7890
 allow-lan: true
