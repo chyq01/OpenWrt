@@ -8,24 +8,19 @@ proxy-providers:
     override:
       udp: true
       skip-cert-verify: true
-
 mixed-port: 7890
 allow-lan: true
 bind-address: "*"
 mode: rule
 log-level: warning
 ipv6: true
-
 geodata-loader: standard
-
 profile:
   store-selected: true
   tracing: false
 unified-delay: false
-
 hosts:
   dnslog.cn: 47.244.138.18
-
 external-controller: 0.0.0.0:9090
 secret: ""
 external-ui: "/etc/nikki/run/ui"
@@ -35,7 +30,6 @@ global-client-fingerprint: chrome
 find-process-mode: "off"
 keep-alive-idle: 600
 keep-alive-interval: 15
-
 sniffer:
   enable: true
   sniff:
@@ -48,7 +42,6 @@ sniffer:
     - "+.v2ex.com"
   skip-domain:
     - "+.baidu.com"
-
 tun:
   enable: true
   stack: mixed
@@ -58,7 +51,6 @@ tun:
   auto-route: true
   auto-redirect: true
   auto-detect-interface: true
-
 dns:
   enable: true
   ipv6: true
@@ -83,11 +75,9 @@ dns:
   fallback:
     - https://dns.google/dns-query
     - https://doh.opendns.com/dns-query
-
   Failover: &Failover "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/failover.png"
   Auto: &Auto "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/auto.png"
   All: &All "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/all.png"
-
 rule-anchor:
   HK: &HK "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$"
   JP: &JP "(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美)).)*$"
@@ -96,20 +86,16 @@ rule-anchor:
   SG: &SG "(?=.*(新加坡|坡|狮城|SG|Singapore))^((?!(港|台|日|韩)).)*$"
   KR: &KR "(?=.*(韩|韩国|🇰🇷|韓|韓國|首尔|南朝鲜|KR|KOR|Korea|South))^((?!(港|台|日|美|新)).)*$"
   Exclude: &Exclude "^((?!(官网|剩余|流量|套餐|订阅|到期时间|全球直连|GB|Expire Date|Traffic|Premium|ExpireDate)).)*$"
-
   SD: &SD {type: select,include-all: true}
   FB: &FB {type: fallback,include-all: true, interval: 300, lazy: true, url: "https://www.gstatic.com/generate_204"}
   URL: &URL {type: url-test,include-all: true, tolerance: 50, interval: 300, lazy: true, url: "https://www.gstatic.com/generate_204"}
   S0: &S0 {type: url-test,proxies: [全球直连, DIRECT], url: "https://www.gstatic.com/generate_204", interval: 300}
   FUNC_COMMON: &FUNC_COMMON [香港自动,日本自动,韩国自动,台湾自动,美国自动,狮城自动,全部自动, 香港手动,日本手动,韩国手动,台湾手动,美国手动,狮城手动,全部手动]
-
   ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
   domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
   domain_text: &domain_text {type: http, interval: 86400, behavior: domain, format: text}
-
 proxies:
   - {name: 全球直连, type: direct, udp: true}
-
 proxy-groups:
   - {name: 默认代理, <<: *SD, proxies: *FUNC_COMMON, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/select.png"}
   - {name: AI, <<: *SD, proxies: *FUNC_COMMON, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/ChatGPT.png"}
@@ -132,7 +118,6 @@ proxy-groups:
   - {name: Apple, <<: *SD, proxies: *FUNC_COMMON, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Apple.png"}
   - {name: HSBC, <<: *SD, proxies: *FUNC_COMMON, icon: "https://raw.githubusercontent.com/chyq01/OpenWrt/refs/heads/main/hsbc-logo.png"}
   - {name: Final, <<: *SD, proxies: *FUNC_COMMON, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/select.png"}
-
   - {name: 香港手动, <<: *SD, filter: *HK, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Hong_Kong.png"}
   - {name: 日本手动, <<: *SD, filter: *JP, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Japan.png"}
   - {name: 韩国手动, <<: *SD, filter: *KR, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/South_Korea.png"}
@@ -147,13 +132,11 @@ proxy-groups:
   - {name: 狮城自动, <<: *URL, filter: *SG, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Singapore.png"}
   - {name: 全部手动, <<: *SD, filter: *Exclude, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/select.png"}
   - {name: 全部自动, <<: *URL, filter: *Exclude, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/select.png"}
-
 rules:
 - DOMAIN-SUFFIX,bangumi.online,台湾自动
 - RULE-SET,hsbc_domain,HSBC
 - RULE-SET,speedtest_domain,Speedtest
 - RULE-SET,private_ip,全球直连,no-resolve
-
 - RULE-SET,crypton_domain,Crypton
 - RULE-SET,ai_domain,AI
 - RULE-SET,youtube_domain,YouTube
@@ -172,18 +155,14 @@ rules:
 - RULE-SET,paypal_domain,PayPal
 - RULE-SET,steamcn_domain,全球直连
 - RULE-SET,steam_domain,Steam
-
 - RULE-SET,cn_domain,全球直连
 - RULE-SET,cn!_domain,默认代理
-
 - RULE-SET,google_ip,Google,no-resolve
 - RULE-SET,apple_ip,Apple,no-resolve
 - RULE-SET,telegram_ip,Telegram,no-resolve
 - RULE-SET,netflix_ip,NETFLIX,no-resolve
 - RULE-SET,cn_ip,全球直连
-
 - MATCH,Final
-
 rule-providers:
   private_domain: {<<: *domain, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/private.mrs"}
   hsbc_domain: {<<: *domain, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/hsbc.mrs"}
@@ -208,7 +187,6 @@ rule-providers:
   cn!_domain: {<<: *domain, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/geolocation-!cn.mrs"}
   cn_domain: {<<: *domain, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/cn.mrs"}
   crypton_domain: {<<: *domain, url: "https://github.com/MetaCubeX/meta-rules-dat/blob/meta/geo/geosite/category-cryptocurrency.mrs"}
-
   google_ip:   {<<: *ip, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geoip/google.mrs"}
   apple_ip:    {<<: *ip, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo-lite/geoip/apple.mrs"}
   telegram_ip: {<<: *ip, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geoip/telegram.mrs"}
