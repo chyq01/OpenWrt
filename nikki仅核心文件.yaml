@@ -116,7 +116,7 @@ proxy-groups:
   - {name: Microsoft, <<: *SD, proxies: *FUNC_COMMON, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Microsoft.png"}
   - {name: OneDrive, <<: *SD, proxies: *FUNC_COMMON, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/OneDrive.png"}
   - {name: Apple, <<: *SD, proxies: *FUNC_COMMON, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Apple.png"}
-  - {name: HSBC, <<: *SD, proxies: *FUNC_COMMON, icon: "https://raw.githubusercontent.com/chyq01/OpenWrt/refs/heads/main/hsbc-logo.png"}
+  - {name: HSBC, <<: *SD, proxies: *FUNC_COMMON, icon: "https://raw.githubusercontent.com/chyq01/OpenWrt/refs/heads/main/HSBC.png"}
   - {name: Final, <<: *SD, proxies: *FUNC_COMMON, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/select.png"}
   - {name: 香港手动, <<: *SD, filter: *HK, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Hong_Kong.png"}
   - {name: 日本手动, <<: *SD, filter: *JP, icon: "https://raw.githubusercontent.com/Vbaethon/HOMOMIX/refs/heads/main/Icon/Color/Large/Japan.png"}
